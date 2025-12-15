@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Cart | TechEdu Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root{--primary:#5eead4;--secondary:#8b5cf6;--dark:#0f172a;--medium:#1e293b;--text:#e2e8f0;--text2:#94a3b8;--accent:#f59e0b;--error:#ef4444;--glass:rgba(15,23,42,.7);--glass-b:rgba(94,234,212,.2);}
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif;}
+        body{background:linear-gradient(135deg,var(--dark) 0%,var(--medium) 100%);color:var(--text);line-height:1.6;min-height:100vh;}
+        .container{max-width:1200px;margin:0 auto;padding:20px;}
+        .promo-banner{background:linear-gradient(135deg,var(--accent) 0%,#d97706 100%);color:#fff;text-align:center;padding:14px;border-radius:12px;font-weight:700;margin-bottom:25px;animation:pulse 2s infinite;}
+        @keyframes pulse{50%{transform:scale(1.02);}}
+        header{background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--glass-b);border-radius:20px;padding:30px;position:relative;overflow:hidden;}
+        .logo-section{position:absolute;top:25px;left:30px;}
+        .tech-logo{width:110px;height:110px;background:linear-gradient(135deg,var(--primary) 0%,#14b8a6 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.4em;color:var(--dark);box-shadow:0 10px 30px rgba(94,234,212,.3);animation:rotate 12s linear infinite;}
+        @keyframes rotate{to{transform:rotate(360deg);}}
+        .user-section{display:flex;justify-content:flex-end;align-items:center;gap:15px;margin-bottom:20px;}
+        .user-info{display:flex;align-items:center;gap:10px;background:rgba(94,234,212,.1);border:1px solid rgba(94,234,212,.3);padding:10px 20px;border-radius:50px;}
+        .user-avatar{width:40px;height:40px;background:linear-gradient(135deg,var(--secondary) 0%,#7c3aed 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;}
+        .logout-btn{padding:10px 20px;background:linear-gradient(135deg,#ef4444 0%,#dc2626 100%);color:#fff;border:none;border-radius:30px;cursor:pointer;transition:.3s;display:flex;align-items:center;gap:8px;font-weight:600;}
+        .logout-btn:hover{transform:translateY(-2px);box-shadow:0 5px 15px rgba(239,68,68,.3);}
+        .banner{text-align:center;margin-bottom:30px;} .banner h1{font-size:3.2em;font-weight:800;margin-bottom:10px;background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;} .banner p{font-size:1.2em;color:var(--text2);margin-bottom:10px;} .academy-address{display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.3);padding:10px 20px;border-radius:50px;color:#c4b5fd;}
+        nav{display:flex;justify-content:center;gap:10px;background:rgba(15,23,42,.5);padding:15px;border-radius:50px;backdrop-filter:blur(10px);border:1px solid var(--glass-b);} nav a{color:var(--text);text-decoration:none;padding:12px 25px;border-radius:30px;transition:.3s;display:flex;align-items:center;gap:8px;font-weight:500;position:relative;overflow:hidden;} nav a::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transition:left .5s;} nav a:hover::before{left:100%;} nav a:hover{background:rgba(94,234,212,.2);color:var(--primary);transform:translateY(-2px);} nav a.active{background:linear-gradient(135deg,var(--primary) 0%,#14b8a6 100%);color:var(--dark);font-weight:600;box-shadow:0 5px 15px rgba(94,234,212,.3);} nav a.disabled{opacity:.5;pointer-events:none;}
+        .main-content{background:var(--glass);border:1px solid var(--glass-b);border-radius:20px;padding:40px;margin-bottom:40px;backdrop-filter:blur(10px);}
+        .banner{text-align:center;margin-bottom:30px;} .banner h1{font-size:3.2em;font-weight:800;margin-bottom:10px;background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;} .banner p{font-size:1.2em;color:var(--text2);margin-bottom:10px;} .academy-address{display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.3);padding:10px 20px;border-radius:50px;color:#c4b5fd;}
+        nav{display:flex;justify-content:center;gap:10px;background:rgba(15,23,42,.5);padding:15px;border-radius:50px;backdrop-filter:blur(10px);border:1px solid var(--glass-b);} nav a{color:var(--text);text-decoration:none;padding:12px 25px;border-radius:30px;transition:.3s;display:flex;align-items:center;gap:8px;font-weight:500;position:relative;overflow:hidden;} nav a::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transition:left .5s;} nav a:hover::before{left:100%;} nav a:hover{background:rgba(94,234,212,.2);color:var(--primary);transform:translateY(-2px);} nav a.active{background:linear-gradient(135deg,var(--primary) 0%,#14b8a6 100%);color:var(--dark);font-weight:600;box-shadow:0 5px 15px rgba(94,234,212,.3);} nav a.disabled{opacity:.5;pointer-events:none;}
+        .cart-container{display:grid;grid-template-columns:2fr 1fr;gap:30px;margin-bottom:40px;} .cart-summary{background:var(--glass);border:1px solid var(--glass-b);border-radius:20px;padding:30px;height:fit-content;} .cart-summary h2{color:var(--primary);margin-bottom:20px;} .cart-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--glass-b);} .cart-total{margin-top:20px;font-size:1.2em;font-weight:700;} .checkout-button{width:100%;padding:16px;background:linear-gradient(135deg,var(--primary) 0%,#14b8a6 100%);color:var(--dark);border:none;border-radius:10px;cursor:pointer;font-weight:700;font-size:1.1em;transition:.3s;margin-top:20px;} .checkout-button:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(94,234,212,.3);} .learning-history{background:var(--glass);border:1px solid var(--glass-b);border-radius:20px;padding:30px;margin-top:40px;} .learning-history h2{color:var(--primary);margin-bottom:20px;} .order-item{background:rgba(0,0,0,.2);border:1px solid var(--glass-b);border-radius:15px;padding:20px;margin-bottom:15px;} .order-item h4{color:var(--primary);margin-bottom:10px;} .order-item p{color:var(--text2);margin-bottom:5px;} .order-item ul{list-style:none;padding-left:0;} .order-item li{color:#cbd5e1;margin-bottom:5px;} @media (max-width:768px){.cart-container{grid-template-columns:1fr;}}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="promo-banner"><i class="fas fa-rocket"></i> Limited Time Offer: 30% Discount on All AI and Programming Courses!</div>
+        <header>
+            <div class="logo-section"><div class="tech-logo"><i class="fas fa-brain"></i></div></div>
+            <div class="user-section">
+                <span id="userNameDisplay">Welcome, Visitor</span>
+                <button onclick="logout()" class="logout-btn" id="logoutBtn" style="display:none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+            <div class="banner"><h1>My Learning Cart</h1><p>Manage selected courses and start your tech journey</p></div>
+            <nav><a href="index.html"><i class="fas fa-home"></i> Home</a><a href="courses.html"><i class="fas fa-graduation-cap"></i> Courses</a><a href="cart.html" class="active"><i class="fas fa-shopping-cart"></i> Learning Cart</a><a href="checkout.html" id="checkoutLink" class="disabled"><i class="fas fa-credit-card"></i> Checkout</a><a href="logout.html" id="logoutLink" class="disabled"><i class="fas fa-sign-out-alt"></i> Logout</a></nav>
+        </header>
+
+        <div class="cart-container">
+            <div class="courses-grid" id="cartCoursesGrid"><!-- dynamic cart courses --></div>
+            <aside class="cart-summary">
+                <h2>Cart Summary</h2>
+                <div id="cartItems"></div>
+                <div class="cart-total"><p>Total: <span id="totalPrice">¥0.00</span></p><p class="discount-note">* 30% student discount applied</p></div>
+                <button id="checkoutBtn" class="checkout-button"><i class="fas fa-rocket"></i> Proceed to Checkout</button>
+            </aside>
+        </div>
+
+        <section class="learning-history"><h2>My Learning History</h2><div id="orderList"></div></section>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About TechEdu Academy</h3>
+                    <p>Forward-thinking tech-ed platform cultivating next-gen innovators & leaders.</p>
+                    <div class="social-links"><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> hello@techedu.academy</p>
+                    <p><i class="fas fa-phone"></i> 400-123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 888 Virtual Ave, Shenzhen</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links"><a href="#"><i class="fab fa-weixin"></i></a><a href="#"><i class="fab fa-weibo"></i></a><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-linkedin"></i></a></div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2024 TechEdu Academy. All rights reserved. | 粤ICP备2024001234号</p></div>
+        </footer>
+    </div>
+
+    <script>
+        /* ---------- Common Vars ---------- */
+        const cart = JSON.parse(localStorage.getItem('techedu_cart')) || [];
+        const orders = JSON.parse(localStorage.getItem('techedu_orders')) || [];
+        let currentUser = JSON.parse(localStorage.getItem('techedu_user'));
+
+        function saveCart() {
+            localStorage.setItem('techedu_cart', JSON.stringify(cart));
+        }
+        function saveOrders() {
+            localStorage.setItem('techedu_orders', JSON.stringify(orders));
+        }
+        function updateNav() {
+            ['cartLink', 'checkoutLink', 'logoutLink'].forEach(id => {
+                document.getElementById(id).classList.toggle('disabled', !currentUser);
+            });
+            document.getElementById('userNameDisplay').textContent = currentUser ?
+                `Welcome, ${currentUser.username}` : 'Welcome, Visitor';
+            document.getElementById('logoutBtn').style.display = currentUser ? 'inline-flex' : 'none';
+        }
+        function logout() {
+            localStorage.removeItem('techedu_user');
+            currentUser = null;
+            updateNav();
+            alert('You have logged out.');
+        }
+        /* ---------- Render Cart ---------- */
+        function renderCart() {
+            const grid = document.getElementById('cartCoursesGrid');
+            const itemsBox = document.getElementById('cartItems');
+            const totalSpan = document.getElementById('totalPrice');
+
+            if (cart.length === 0) {
+                grid.innerHTML = '<p style="color:#94a3b8">Your cart is empty.</p>';
+                itemsBox.innerHTML = '';
+                totalSpan.textContent = '¥0.00';
+                return;
+            }
+
+            grid.innerHTML = cart.map(c => `
+                <div class="course-card">
+                    <div class="course-image cloud-bg"><div class="course-badge">In Cart</div></div>
+                    <div class="course-content">
+                        <div class="course-code">C-${c.id}</div>
+                        <h3 class="course-title">${c.name}</h3>
+                        <p class="course-description">Quantity: ${c.quantity}</p>
+                        <div class="course-pricing"><div class="price-discount">¥${c.price} <span class="discount-tag">30% OFF</span></div></div>
+                        <div class="course-actions"><button class="btn btn-secondary" onclick="removeFromCart(${c.id})"><i class="fas fa-trash"></i> Remove</button></div>
+                    </div>
+                </div>
+            `).join('');
+
+            itemsBox.innerHTML = cart.map(c => `
+                <div class="cart-item"><span>${c.name} x${c.quantity}</span><span>¥${(c.price * c.quantity).toFixed(2)}</span></div>
+            `).join('');
+
+            const total = cart.reduce((s, c) => s + c.price * c.quantity, 0);
+            totalSpan.textContent = `¥${total.toFixed(2)}`;
+        }
+        function removeFromCart(id) {
+            const idx = cart.findIndex(c => c.id === id);
+            if (idx > -1) cart.splice(idx, 1);
+            saveCart();
+            renderCart();
+        }
+        /* ---------- Checkout ---------- */
+        document.getElementById('checkoutBtn').addEventListener('click', () => {
+            if (!currentUser) return alert('Please log in first.');
+            if (cart.length === 0) return alert('Your cart is empty.');
+            const total = cart.reduce((s, c) => s + c.price * c.quantity, 0);
+            const order = {id: Date.now(), date: new Date().toISOString(), items: [...cart], total};
+            orders.push(order);
+            saveOrders();
+            cart.length = 0;
+            saveCart();
+            alert('Order placed! Check your learning history below.');
+            renderCart();
+            renderOrders();
+        });
+        /* ---------- Orders History ---------- */
+        function renderOrders() {
+            const box = document.getElementById('orderList');
+            const userOrders = orders.filter(o => currentUser && o.items.some(i => i.username === currentUser.username));
+            if (!currentUser || userOrders.length === 0) {
+                box.innerHTML = '<p style="color:#94a3b8">No learning history yet.</p>';
+                return;
+            }
+            box.innerHTML = userOrders.map(o => `
+                <div class="order-item">
+                    <h4>Order #${o.id} · ${new Date(o.date).toLocaleDateString()}</h4>
+                    <p>Total: ¥${o.total.toFixed(2)}</p>
+                    <ul>${o.items.map(i => `<li>${i.name} x${i.quantity}</li>`).join('')}</ul>
+                </div>
+            `).join('');
+        }
+        /* ---------- Init ---------- */
+        updateNav();
+        renderCart();
+        renderOrders();
+    </script>
+</body>
+</html>

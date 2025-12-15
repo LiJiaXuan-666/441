@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechEdu Academy | Future Tech Education</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--primary:#5eead4;--secondary:#8b5cf6;--dark:#0f172a;--medium:#1e293b;--text:#e2e8f0;--text2:#94a3b8;--accent:#f59e0b;--error:#ef4444;--glass:rgba(15,23,42,.7);--glass-b:rgba(94,234,212,.2);}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif;}
+body{background:linear-gradient(135deg,var(--dark) 0%,var(--medium) 100%);color:var(--text);line-height:1.6;min-height:100vh;}
+.container{max-width:1200px;margin:0 auto;padding:20px;}
+.promo-banner{background:linear-gradient(135deg,var(--accent) 0%,#d97706 100%);color:#fff;text-align:center;padding:14px;border-radius:12px;font-weight:700;margin-bottom:25px;animation:pulse 2s infinite;}
+@keyframes pulse{50%{transform:scale(1.02);}}
+header{background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--glass-b);border-radius:20px;padding:30px;position:relative;overflow:hidden;}
+.logo-section{position:absolute;top:25px;left:30px;}
+.tech-logo{width:110px;height:110px;background:linear-gradient(135deg,var(--primary) 0%,#14b8a6 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.4em;color:var(--dark);box-shadow:0 10px 30px rgba(94,234,212,.3);animation:rotate 12s linear infinite;}
+@keyframes rotate{to{transform:rotate(360deg);}}
+.user-section{display:flex;justify-content:flex-end;align-items:center;gap:15px;margin-bottom:20px;}
+.user-info{display:flex;align-items:center;gap:10px;background:rgba(94,234,212,.1);border:1px solid rgba(94,234,212,.3);padding:10px 20px;border-radius:50px;}
+.user-avatar{width:40px;height:40px;background:linear-gradient(135deg,var(--secondary) 0%,#7c3aed 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;}
+.logout-btn{padding:10px 20px;background:linear-gradient(135deg,#ef4444 0%,#dc2626 100%);color:#fff;border:none;border-radius:30px;cursor:pointer;transition:.3s;display:flex;align-items:center;gap:8px;font-weight:600;}
+.logout-btn:hover{transform:translateY(-2px);box-shadow:0 5px 15px rgba(239,68,68,.3);}
+.banner{text-align:center;margin-bottom:30px;} .banner h1{font-size:3.2em;font-weight:800;margin-bottom:10px;background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;} .banner p{font-size:1.2em;color:var(--text2);margin-bottom:10px;} .academy-address{display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.3);padding:10px 20px;border-radius:50px;color:#c4b5fd;}
+nav{display:flex;justify-content:center;gap:10px;background:rgba(15,23,42,.5);padding:15px;border-radius:50px;backdrop-filter:blur(10px);border:1px solid var(--glass-b);} nav a{color:var(--text);text-decoration:none;padding:12px 25px;border-radius:30px;transition:.3s;display:flex;align-items:center;gap:8px;font-weight:500;position:relative;overflow:hidden;} nav a::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transition:left .5s;} nav a:hover::before{left:100%;} nav a:hover{background:rgba(94,234,212,.2);color:var(--primary);transform:translateY(-2px);} nav a.active{background:linear-gradient(135deg,var(--primary) 0%,#14b8a6 100%);color:var(--dark);font-weight:600;box-shadow:0 5px 15px rgba(94,234,212,.3);} nav a.disabled{opacity:.5;pointer-events:none;}
+.main-content{background:var(--glass);border:1px solid var(--glass-b);border-radius:20px;padding:40px;margin-bottom:40px;backdrop-filter:blur(10px);}
+.hero-section{text-align:center;padding:100px 0;background:url('https://picsum.photos/1600/900?random=0') center/cover no-repeat;border-radius:20px;margin-bottom:40px;position:relative;}
+.hero-section::before{content:'';position:absolute;inset:0;background:rgba(15,23,42,.55);border-radius:20px;}
+.hero-section>*{position:relative;z-index:2;}
+.hero-title{font-size:2.8em;margin-bottom:20px;background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-subtitle{font-size:1.2em;color:var(--text2);margin-bottom:40px;max-width:700px;margin-left:auto;margin-right:auto;}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin:40px 0;} 
+.stat-card{background:rgba(15,23,42,.7);border:1px solid var(--glass-b);border-radius:15px;padding:30px 20px;text-align:center;transition:.3s;} 
+.stat-card:hover{transform:translateY(-5px);border-color:rgba(139,92,246,.4);box-shadow:0 10px 30px rgba(0,0,0,.2);} 
+.stat-number{font-size:2.5em;font-weight:800;color:var(--primary);display:block;margin-bottom:10px;} 
+.stat-label{color:#64748b;}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin:50px 0;} 
+.feature-card{background:rgba(15,23,42,.7);border:1px solid var(--glass-b);border-radius:20px;padding:40px 30px;text-align:center;transition:.4s;position:relative;overflow:hidden;} 
+.feature-card:hover{transform:translateY(-10px);border-color:rgba(139,92,246,.4);box-shadow:0 15px 40px rgba(0,0,0,.3);}
+.feature-icon{width:80px;height:80px;background:linear-gradient(135deg,var(--primary) 0%,#14b8a6 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 25px;font-size:2em;color:var(--dark);box-shadow:0 10px 25px rgba(94,234,212,.3);} 
+.feature-title{font-size:1.4em;margin-bottom:15px;color:var(--primary);} 
+.feature-description{color:var(--text2);line-height:1.7;}
+.courses-section{margin:40px 0;} .section-header{text-align:center;margin-bottom:40px;} .section-title{font-size:2.5em;color:var(--primary);margin-bottom:15px;} .section-subtitle{font-size:1.2em;color:var(--text2);} 
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:30px;} 
+.course-card{background:rgba(15,23,42,.7);border:1px solid var(--glass-b);border-radius:20px;overflow:hidden;transition:.4s;} 
+.course-card:hover{transform:translateY(-10px);border-color:rgba(139,92,246,.4);box-shadow:0 20px 50px rgba(0,0,0,.3);} 
+.course-image{height:200px;position:relative;overflow:hidden;background-size:cover;background-position:center;} 
+/* ====== 首页课程图（统一用 picsum，国内可开） ====== */
+.course-image.ai-bg{background-image:url('https://picsum.photos/800/400?random=1');}
+.course-image.blockchain-bg{background-image:url('https://picsum.photos/800/400?random=2');}
+.course-image.cloud-bg{background-image:url('https://picsum.photos/800/400?random=3');}
+.course-badge{position:absolute;top:15px;right:15px;background:linear-gradient(135deg,#f59e0b 0%,#d97706 100%);color:#fff;padding:8px 16px;border-radius:25px;font-size:.8em;font-weight:700;box-shadow:0 4px 15px rgba(245,158,11,.3);z-index:10;} 
+.course-content{padding:25px;} .course-code{color:var(--primary);font-size:.9em;font-weight:600;margin-bottom:10px;} .course-title{font-size:1.3em;color:var(--text);margin-bottom:15px;} .course-description{color:var(--text2);margin-bottom:20px;line-height:1.6;} .course-features{list-style:none;margin:20px 0;} .course-features li{color:#cbd5e1;margin-bottom:8px;display:flex;align-items:center;gap:10px;} .course-features li::before{content:'✓';color:var(--primary);font-weight:bold;} .course-pricing{background:rgba(0,0,0,.2);padding:15px;border-radius:10px;margin:20px 0;} .price-original{color:#64748b;text-decoration:line-through;font-size:1em;} .price-discount{color:var(--primary);font-size:1.4em;font-weight:700;} .discount-tag{background:var(--accent);color:#fff;padding:4px 12px;border-radius:20px;font-size:.8em;font-weight:600;display:inline-block;margin-left:10px;} .course-actions{display:flex;gap:10px;} .btn{flex:1;padding:12px;border:none;border-radius:10px;cursor:pointer;font-weight:600;transition:.3s;display:flex;align-items:center;justify-content:center;gap:8px;} .btn-primary{background:linear-gradient(135deg,var(--primary) 0%,#14b8a6 100%);color:var(--dark);} .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(94,234,212,.3);} .btn-secondary{background:transparent;color:var(--primary);border:2px solid var(--primary);} .btn-secondary:hover{background:var(--primary);color:var(--dark);}
+footer{background:linear-gradient(135deg,#1e293b 0%,#334155 100%);color:#fff;padding:40px 30px;border-radius:20px;margin-top:60px;} .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:35px;} .footer-section h3{margin-bottom:18px;color:#f1f5f9;} .footer-section p{color:#cbd5e1;line-height:1.7;} .social-links{display:flex;gap:18px;margin-top:10px;} .social-links a{color:#fff;font-size:22px;transition:.3s;background:rgba(255,255,255,.1);width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;} .social-links a:hover{color:#93c5fd;transform:translateY(-5px) scale(1.1);background:rgba(255,255,255,.2);} .footer-bottom{text-align:center;margin-top:40px;padding-top:25px;border-top:1px solid rgba(255,255,255,.15);color:#94a3b8;} @media (max-width:768px){.banner h1{font-size:2.2em;} nav{flex-direction:column;gap:8px;} .courses-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="promo-banner"><i class="fas fa-rocket"></i> Limited Time Offer: 30% Discount on All AI and Programming Courses!</div>
+  <header>
+    <div class="logo-section"><div class="tech-logo"><i class="fas fa-brain"></i></div></div>
+    <div class="user-section">
+      <div class="user-info"><span id="userNameDisplay">Welcome, Visitor</span><div class="user-avatar"><i class="fas fa-user"></i></div></div>
+      <button onclick="logout()" class="logout-btn" id="logoutBtn" style="display:none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+    <div class="banner"><h1>Future Technology Education</h1><p>Master AI, Programming & Data-Science Skills for Tomorrow</p><div class="academy-address"><i class="fas fa-map-marker-alt"></i> 888 Virtual Avenue, Shenzhen Nanshan Science Park</div></div>
+    <nav><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a><a href="courses.html"><i class="fas fa-graduation-cap"></i> Courses</a><a href="cart.html" id="cartLink" class="disabled"><i class="fas fa-shopping-cart"></i> Learning Cart</a><a href="checkout.html" id="checkoutLink" class="disabled"><i class="fas fa-credit-card"></i> Checkout</a><a href="logout.html" id="logoutLink" class="disabled"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    <!-- 新增注册 + 登录 -->
+<a href="login.html"><i class="fas fa-user-plus"></i> Register</a>
+<a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <section class="hero-section">
+      <h2 class="hero-title">Welcome to TechEdu Academy</h2>
+      <p class="hero-subtitle">In the digital era we train next-gen tech innovators. Practice-oriented courses let you master AI, Blockchain, Cloud & more.</p>
+      <div class="stats-grid">
+        <div class="stat-card"><span class="stat-number">5,000+</span><span class="stat-label">Active Learners</span></div>
+        <div class="stat-card"><span class="stat-number">99%</span><span class="stat-label">Job Success</span></div>
+        <div class="stat-card"><span class="stat-number">24/7</span><span class="stat-label">AI-Tutor Support</span></div>
+        <div class="stat-card"><span class="stat-number">50+</span><span class="stat-label">Industry Mentors</span></div>
+      </div>
+    </section>
+
+    <section class="features-section">
+      <div class="features-grid">
+        <div class="feature-card"><div class="feature-icon"><i class="fas fa-robot"></i></div><h3 class="feature-title">AI-Driven Learning</h3><p class="feature-description">Personal AI paths adapt content to your pace & level in real-time.</p></div>
+        <div class="feature-card" style="background:url('https://picsum.photos/800/400?random=4') center/cover;"><div class="feature-icon"><i class="fas fa-vr-cardboard"></i></div><h3 class="feature-title">VR Virtual Labs</h3><p class="feature-description">Immersive VR environments for safe, hands-on complex-lab practice.</p></div>
+        <div class="feature-card" style="background:url('https://picsum.photos/800/400?random=5') center/cover;"><div class="feature-icon"><i class="fas fa-briefcase"></i></div><h3 class="feature-title">Real Projects</h3><p class="feature-description">Partner with companies on live projects—graduate with experience.</p></div>
+      </div>
+    </section>
+
+    <section class="courses-section">
+      <div class="section-header"><h2 class="section-title">Hot Tech Courses</h2><p class="section-subtitle">Stay ahead with future-proof skills</p></div>
+      <div class="courses-grid">
+        <div class="course-card">
+          <div class="course-image ai-bg"><div class="course-badge">Hot</div></div>
+          <div class="course-content">
+            <div class="course-code">AI-301</div>
+            <h3 class="course-title">Deep Learning & Neural Nets</h3>
+            <p class="course-description">Master TensorFlow & PyTorch; build, train and deploy your own models.</p>
+            <ul class="course-features"><li>12-week progressive track</li><li>GPU cloud compute included</li><li>Enterprise project portfolio</li></ul>
+            <div class="course-pricing"><div class="price-original">¥3,999</div><div class="price-discount">¥2,799 <span class="discount-tag">30% OFF</span></div></div>
+            <div class="course-actions"><button class="btn btn-primary" onclick="addToCart(1)"><i class="fas fa-cart-plus"></i> Add to Cart</button><button class="btn btn-secondary"><i class="fas fa-info-circle"></i> Details</button></div>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-image blockchain-bg"><div class="course-badge">New</div></div>
+          <div class="course-content">
+            <div class="course-code">BC-201</div>
+            <h3 class="course-title">Blockchain Dev Bootcamp</h3>
+            <p class="course-description">Ethereum, Solidity, smart-contracts & DApps from zero to mainnet.</p>
+            <ul class="course-features"><li>10-week intensive</li><li>Real on-chain deploy</li><li>NFT capstone</li></ul>
+            <div class="course-pricing"><div class="price-original">¥3,499</div><div class="price-discount">¥2,449 <span class="discount-tag">30% OFF</span></div></div>
+            <div class="course-actions"><button class="btn btn-primary" onclick="addToCart(2)"><i class="fas fa-cart-plus"></i> Add to Cart</button><button class="btn btn-secondary"><i class="fas fa-info-circle"></i> Details</button></div>
+          </div>
+        </div>
+        <div class="course-card">
+          <div class="course-image cloud-bg"><div class="course-badge">Pro</div></div>
+          <div class="course-content">
+            <div class="course-code">CL-401</div>
+            <h3 class="course-title">Cloud-Native Architect</h3>
+            <p class="course-description">K8s, Docker, micro-services & DevOps on AWS, Azure, GCP.</p>
+            <ul class="course-features"><li>16-week deep-dive</li><li>Multi-cloud labs</li><li>CI/CD pipelines</li></ul>
+            <div class="course-pricing"><div class="price-original">¥4,999</div><div class="price-discount">¥3,499 <span class="discount-tag">30% OFF</span></div></div>
+            <div class="course-actions"><button class="btn btn-primary" onclick="addToCart(3)"><i class="fas fa-cart-plus"></i> Add to Cart</button><button class="btn btn-secondary"><i class="fas fa-info-circle"></i> Details</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section"><h3>About TechEdu Academy</h3><p>Forward-thinking tech-ed platform cultivating next-gen innovators & leaders.</p><div class="social-links"><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div></div>
+      <div class="footer-section"><h3>Contact</h3><p><i class="fas fa-envelope"></i> hello@techedu.academy</p><p><i class="fas fa-phone"></i> 400-123-4567</p><p><i class="fas fa-map-marker-alt"></i> 888 Virtual Ave, Shenzhen</p></div>
+      <div class="footer-section"><h3>Follow Us</h3><div class="social-links"><a href="#"><i class="fab fa-weixin"></i></a><a href="#"><i class="fab fa-weibo"></i></a><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fab fa-linkedin"></i></a></div></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2024 TechEdu Academy. All rights reserved. | 粤ICP备2024001234号</p></div>
+  </footer>
+</div>
+
+<script>
+/* ---------- Common ---------- */
+const cart = JSON.parse(localStorage.getItem('techedu_cart')) || [];
+let currentUser = JSON.parse(localStorage.getItem('techedu_user'));
+function saveCart() { localStorage.setItem('techedu_cart', JSON.stringify(cart)); }
+function updateNav() {
+  ['cartLink','checkoutLink','logoutLink'].forEach(id => document.getElementById(id)?.classList.toggle('disabled', !currentUser));
+  document.getElementById('userNameDisplay').textContent = currentUser ? `Welcome, ${currentUser.username}` : 'Welcome, Visitor';
+  const btn = document.getElementById('logoutBtn');
+  if (btn) btn.style.display = currentUser ? 'inline-flex' : 'none';
+}
+function logout() {
+  localStorage.removeItem('techedu_user');
+  currentUser = null;
+  updateNav();
+  alert('You have logged out.');
+}
+function addToCart(id) {
+  if (!currentUser) return alert('Please log in first.');
+  const course = {
+    1: {id: 1, name: 'Deep Learning & Neural Nets', price: 2799},
+    2: {id: 2, name: 'Blockchain Dev Bootcamp', price: 2449},
+    3: {id: 3, name: 'Cloud-Native Architect', price: 3499}
+  }[id];
+  const exist = cart.find(c => c.id === id);
+  if (exist) exist.quantity += 1; else cart.push({...course, quantity: 1});
+  saveCart();
+  alert('Course added to cart!');
+}
+
+/* ---------- Init ---------- */
+updateNav();
+</script>
+</body>
+</html>
